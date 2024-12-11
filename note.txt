@@ -1,3 +1,30 @@
+
+(Eng)
+Problem
+Uneven brightness and lesions appearing in different locations pose challenges for classification.
+Frequency learning: Separates shape and structure information from factors like brightness by combining phase and magnitude information, providing a more comprehensive understanding of the image.
+
+Patch Scrambling Module:
+
+Transforms the image from the time domain to a complex spectrogram using DFT (Discrete Fourier Transform).
+Divides the image into smaller parts (patches) and performs scrambling.
+Purpose:
+Aggregates local information.
+Improves the learning of non-local information (long-range dependencies).
+Frequency-Domain Complex Network:
+
+Replaces original components with complex counterparts:
+Convolution → Complex Convolution (CConv).
+ReLU → Complex ReLU (CReLU).
+BatchNorm → Complex BatchNorm (CBatchNorm).
+This enables the model to process complex numbers from the spectrogram, extracting richer feature representations from the data.
+
+
+
+
+
+
+(Vie)
 Vấn đề: Độ sáng không đều, đục xuất hiện ở các vị trí khác
 Học tần số: Tách biệt thông tin hình dạng và cấu trúc khỏi các yếu tố như độ sáng, kết hợp thông tin pha và biên độ để có cái nhìn toàn diện hơn về hình ảnh/
 
