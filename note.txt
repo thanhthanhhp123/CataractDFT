@@ -1,0 +1,15 @@
+Vấn đề: Độ sáng không đều, đục xuất hiện ở các vị trí khác
+Học tần số: Tách biệt thông tin hình dạng và cấu trúc khỏi các yếu tố như độ sáng, kết hợp thông tin pha và biên độ để có cái nhìn toàn diện hơn về hình ảnh/
+
+
+MODULES
+
+1. Patch Scrambling Module:
+- Chuyển ảnh từ không gian thời gian (time-domain) sang phổ phức (complex spectrogram) sử dụng DFT
+- Tiến hành cắt nhỏ từng phần (patch) và xáo trộn (scrambling)
+- Mục đích: Tổng hợp thông tin cục bộ (local information), cải thiện học thông tin phi cục bộ (non-local information)
+
+2. Frequancy-domain complex net:
+- Thay thế các thành phần gốc thành các thành phần complex (conv -> cconv, relu -> crelu, batchnorm -> cbatchnorm)
+- Điều này giúp xử lí các giá trị phức (complex numbers) từ phổ, từ đó trích xuất các đặc trưng phong phú hơn từ dữ liệu
+
