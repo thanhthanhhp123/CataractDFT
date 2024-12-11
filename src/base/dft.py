@@ -9,7 +9,7 @@ from torch.utils.data import DataLoader
 from PIL import Image
 import os
 import matplotlib.pyplot as plt
-from net import DualCNN
+from base.net import DualCNN
 
 if not os.path.exists('dualcnn'):
     os.makedirs('dualcnn')

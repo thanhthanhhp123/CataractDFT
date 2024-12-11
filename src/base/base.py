@@ -7,7 +7,7 @@ import numpy as np
 import torch.optim as optim
 from torch.utils.data import DataLoader
 
-from net import BaseModel
+from base.net import BaseModel
 import os
 import matplotlib.pyplot as plt
 import logging
