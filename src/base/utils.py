@@ -52,17 +52,14 @@ class FrequencyPatchMasking:
         
         return augmented_image
 
-if __name__ == "_main_":
+if __name__ == "__main__":
     # Đọc ảnh đầu vào (grayscale)
-    img = cv2.imread('/Users/tranthanh/Documents/Projects/CataractDFT/cat_0_1000_jpg.rf.7459ebf91d974d53a62a330633556239.jpg', cv2.IMREAD_GRAYSCALE)
-    
-    # Tạo module FPM
+    img = cv2.imread(r'E:\Project\Cataract_DFT\Dataset\train\Cataract\cat_0_2_jpg.rf.08f7d3c45435d21a2dc1675978878654.jpg', cv2.IMREAD_GRAYSCALE)
+
     fpm = FrequencyPatchMasking(mask_size=(5, 5))
     
-    # Áp dụng FPM
     augmented_img = fpm.process(img)
     
-    # Hiển thị kết quả
     plt.figure(figsize=(10, 5))
     plt.subplot(1, 2, 1)
     plt.title("Original Image")
@@ -71,5 +68,7 @@ if __name__ == "_main_":
     plt.subplot(1, 2, 2)
     plt.title("Augmented Image (FPM)")
     plt.imshow(augmented_img, cmap='gray')
+    plt.savefig('FPM.png')
 
-    plt.show()
+    
+
