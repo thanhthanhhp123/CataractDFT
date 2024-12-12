@@ -18,9 +18,9 @@ class ComplexDropout(nn.Module):
     def forward(self, input_r, input_i):
         return c_dropout(input_r, input_i, self.p, self.training, self.inplace)
 
-class Complex_AdaptiveAvgPool2d(nn.Module):
+class ComplexAdaptiveAvgPool2d(nn.Module):
     def __init__(self, output_size=(1, 1)):
-        super(Complex_AdaptiveAvgPool2d, self).__init__()
+        super(ComplexAdaptiveAvgPool2d, self).__init__()
         self.output_size = output_size
 
     def forward(self, input_r, input_i):
@@ -64,7 +64,7 @@ class ComplexTranspose2d(nn.Module):
             self.conv_tran_r(input_i) + self.conv_tran_i(input_r)
     
 class ComplexConv2d(nn.Module):
-    def __init__(self, in_channels, out_channels, kernel_size, stride, padding, dilation, groups, bias):
+    def __init__(self, in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True):
         super(ComplexConv2d, self).__init__()
 
         self.conv_r = nn.Conv2d(in_channels, out_channels, kernel_size, stride, padding, dilation, groups, bias)
