@@ -61,20 +61,20 @@ def Trainer(model, optim, train_loader, val_loader, epochs, loss_fn, device='cud
             "epoch": epoch + 1,
             "train_loss": train_loss,
             "train_accuracy": train_metrics["accuracy"],
-            "train_f1_score": train_metrics["f1_score"],
+            "train_f1_score": train_metrics["f1"],
             "train_precision": train_metrics["precision"],
             "train_recall": train_metrics["recall"],
             "test_loss": test_loss,
             "test_accuracy": test_metrics["accuracy"],
-            "test_f1_score": test_metrics["f1_score"],
+            "test_f1_score": test_metrics["f1"],
             "test_precision": test_metrics["precision"],
             "test_recall": test_metrics["recall"],
         }
         metrics_history.append(epoch_metrics)
         
         print(f"Epoch {epoch+1}/{epochs} | "
-              f"Train Loss: {train_loss:.4f}, Train Accuracy: {train_metrics['accuracy']:.4f}, F1: {train_metrics['f1_score']:.4f} | "
-              f"Test Loss: {test_loss:.4f}, Test Accuracy: {test_metrics['accuracy']:.4f}, F1: {test_metrics['f1_score']:.4f}")
+              f"Train Loss: {train_loss:.4f}, Train Accuracy: {train_metrics['accuracy']:.4f}, F1: {train_metrics['f1']:.4f} | "
+              f"Test Loss: {test_loss:.4f}, Test Accuracy: {test_metrics['accuracy']:.4f}, F1: {test_metrics['f1']:.4f}")
 
     metrics_df = pd.DataFrame(metrics_history)
     metrics_df.to_csv(output_csv, index=False)
@@ -104,7 +104,7 @@ def Tester(model, test_loader, device='cuda'):
     test_metrics = compute_metrics(test_targets, test_preds)
     test_loss /= len(test_loader)
 
-    print(f"Test Loss: {test_loss:.4f}, Test Accuracy: {test_metrics['accuracy']:.4f}, F1: {test_metrics['f1_score']:.4f}")
+    print(f"Test Loss: {test_loss:.4f}, Test Accuracy: {test_metrics['accuracy']:.4f}, F1: {test_metrics['f1']:.4f}")
 
     pd.DataFrame(test_metrics, index=[0]).to_csv("test_metrics.csv", index=False)
     print("Test metrics saved to test_metrics.csv")
